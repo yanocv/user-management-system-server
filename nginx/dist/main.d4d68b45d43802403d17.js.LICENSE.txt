@@ -1,0 +1,817 @@
+/*
+  options.target         - name of the target object
+  options.global         - target is the global object
+  options.stat           - export as static methods of target
+  options.proto          - export as prototype methods of target
+  options.real           - real prototype method for the `pure` version
+  options.forced         - export even if the native feature is available
+  options.bind           - bind methods to the target, required for the `pure` version
+  options.wrap           - wrap constructors to preventing global pollution, required for the `pure` version
+  options.unsafe         - use the simple assignment of property instead of delete + defineProperty
+  options.sham           - add a flag to not completely full polyfills
+  options.enumerable     - export as enumerable property
+  options.dontCallGetSet - prevent calling a getter on target
+  options.name           - the .name of the function if it does not match the key
+*/
+
+/* , base */
+
+/* , init */
+
+/* , mapfn = undefined, thisArg = undefined */
+
+/* , thisArg */
+
+/* empty */
+
+/* eslint-disable es-x/no-array-prototype-keys -- safe */
+
+/* eslint-disable es-x/no-object-getownpropertynames -- safe */
+
+/* eslint-disable es-x/no-symbol -- required for testing */
+
+/* eslint-disable es-x/no-symbol -- safe */
+
+/* eslint-disable no-proto -- safe */
+
+/* eslint-disable regexp/no-empty-capturing-group, regexp/no-empty-group, regexp/no-lazy-ends -- testing */
+
+/* eslint-disable regexp/no-useless-quantifier -- testing */
+
+/* global ActiveXObject -- old IE, WSH */
+
+/* ignore */
+
+/***/
+
+//  0..25 map to ASCII a..z or A..Z
+
+// (for example, `DOMQuad` and similar in FF41-)
+
+// 2 ** 53 - 1 == 9007199254740991
+
+// 25.4.3.1 Promise(executor)
+
+// 26..35 map to ASCII 0..9
+
+// All non-basic code points < n have been handled already. Find the next larger one:
+
+// Array#includes uses SameValueZero equality algorithm
+
+// Array#indexOf ignores holes, Array#includes - not
+
+// Array.prototype[@@unscopables]
+
+// BrowserFS NodeJS `process` polyfill incorrectly set `.v8` to `0.0`
+
+// Browsers should not trigger `rejectionHandled` event if it was handled here, NodeJS - should
+
+// Cache the length.
+
+// Chrome 38 Symbol has incorrect toString conversion
+
+// Chrome 38-40 symbols are not inherited from DOM collections prototypes to instances
+
+// Convert the input in UCS-2 to an array of Unicode code points.
+
+// Deno throws a ReferenceError on `location` access without `--location` flag
+
+// Detect IE8's incomplete defineProperty implementation
+
+// Detect correctness of subclassing with @@species support
+
+// Don't enum bug & hidden keys
+
+// FF44- legacy iterators case
+
+// Finish the basic string with a delimiter unless it's empty.
+
+// Fix browsers whose `exec` methods don't consistently return `undefined`
+
+// Function instances `.name` property
+
+// Handle the basic code points.
+
+// Helper for a popular repeating case of the spec:
+
+// IE8 returns string on undefined
+
+// IE8- don't enum bug keys
+
+// If integer < 0, let result be max((length + integer), 0); else let result be min(integer, length).
+
+// Increase `delta` enough to advance the decoder's <n,i> state to <m,0>, but guard against overflow.
+
+// Initialize the state.
+
+// It's a high surrogate, and there is a next character.
+
+// It's an unmatched surrogate; only append this code unit, in case the
+
+// Let integer be ? ToInteger(index).
+
+// Low surrogate.
+
+// MS Edge converts symbol values to JSON as {}
+
+// Main encoding loop:
+
+// Node.js 0.8-
+
+// Node.js 0.9+ & IE10+ has setImmediate, otherwise:
+
+// Promise.resolve without an argument throws an error in LG WebOS 2
+
+// Represent delta as a generalized variable-length integer.
+
+// Safari 12 bug
+
+// Safari 8 has buggy iterators w/o `next`
+
+// Set @@toStringTag to native iterators
+
+// Support anchored sticky behavior.
+
+// TODO: Remove this module from `core-js@4` since it's replaced to module below
+
+// TODO: Remove this module from `core-js@4` since it's split to modules listed below
+
+// TODO: in core-js@4, move /modules/ dependencies to public entries for better optimization by tools like `preset-env`
+
+// Thanks to IE8 for its funny defineProperty
+
+// Unhandled rejections tracking support, NodeJS Promise without it fails @@species test
+
+// V8 6.6 (Node 10 and Chrome 66) have a bug with resolving custom thenables
+
+// V8 ~ Chrome 36-
+
+// V8 ~ Chrome 45- bug
+
+// WSH
+
+// We can't detect it synchronously, so just check versions
+
+// We can't use @@species feature detection in V8 since it causes
+
+// We can't use this feature detection in V8 since it causes
+
+// We need Promise#{ catch, finally } in the pure version for preventing prototype pollution
+
+// Works with __proto__ only. Old v8 can't work with null proto objects.
+
+// Wrap `fetch` and `Request` for correct work with polyfilled `URLSearchParams`
+
+// ^(? + rx + ) is needed, in combination with some str slicing, to
+
+// `%ArrayIteratorPrototype%.next` method
+
+// `%IteratorPrototype%[@@iterator]()` method
+
+// `%StringIteratorPrototype%.next` method
+
+// `Array.from` method
+
+// `Array.from` method implementation
+
+// `Array.prototype.concat` method
+
+// `Array.prototype.entries` method
+
+// `Array.prototype.every` method
+
+// `Array.prototype.filterReject` method
+
+// `Array.prototype.filter` method
+
+// `Array.prototype.findIndex` method
+
+// `Array.prototype.find` method
+
+// `Array.prototype.forEach` method
+
+// `Array.prototype.forEach` method implementation
+
+// `Array.prototype.includes` method
+
+// `Array.prototype.indexOf` method
+
+// `Array.prototype.keys` method
+
+// `Array.prototype.map` method
+
+// `Array.prototype.slice` method
+
+// `Array.prototype.some` method
+
+// `Array.prototype.values` method
+
+// `Array.prototype[@@iterator]` method
+
+// `ArraySpeciesCreate` abstract operation
+
+// `Assert: IsCallable(argument) is true`
+
+// `Assert: IsConstructor(argument) is true`
+
+// `Assert: Type(argument) is Object`
+
+// `CreateArrayIterator` internal method
+
+// `Function#toString` throws on some built-it function in some legacy engines
+
+// `GetMethod` abstract operation
+
+// `HasOwnProperty` abstract operation
+
+// `IsArray` abstract operation
+
+// `IsCallable` abstract operation
+
+// `IsConstructor` abstract operation
+
+// `JSON.stringify` method
+
+// `LengthOfArrayLike` abstract operation
+
+// `Math.trunc` method
+
+// `NewPromiseCapability` abstract operation
+
+// `Object.assign` method
+
+// `Object.create` method
+
+// `Object.defineProperties` method
+
+// `Object.defineProperty` method
+
+// `Object.getOwnPropertyDescriptor` method
+
+// `Object.getOwnPropertyDescriptors` method
+
+// `Object.getOwnPropertyNames` method
+
+// `Object.getOwnPropertySymbols` method
+
+// `Object.getPrototypeOf` method
+
+// `Object.keys` method
+
+// `Object.prototype.propertyIsEnumerable` method implementation
+
+// `Object.prototype.toString` method
+
+// `Object.prototype.toString` method implementation
+
+// `Object.setPrototypeOf` method
+
+// `OrdinaryToPrimitive` abstract operation
+
+// `Promise.all` method
+
+// `Promise.prototype.catch` method
+
+// `Promise.prototype.then` method
+
+// `Promise.race` method
+
+// `Promise.reject` method
+
+// `Promise.resolve` method
+
+// `RegExp.prototype.exec` method
+
+// `RegExp.prototype.flags` getter implementation
+
+// `RequireObjectCoercible` abstract operation
+
+// `SpeciesConstructor` abstract operation
+
+// `String.prototype.at` method
+
+// `String.prototype.codePointAt` method
+
+// `String.prototype[@@iterator]` method
+
+// `Symbol.for` method
+
+// `Symbol.iterator` well-known symbol
+
+// `Symbol.keyFor` method
+
+// `Symbol.prototype.description` getter
+
+// `Symbol.prototype[@@toPrimitive]` method
+
+// `Symbol.prototype[@@toStringTag]` property
+
+// `Symbol` constructor
+
+// `ToIntegerOrInfinity` abstract operation
+
+// `ToLength` abstract operation
+
+// `ToObject` abstract operation
+
+// `ToPrimitive` abstract operation
+
+// `ToPropertyKey` abstract operation
+
+// `URL.createObjectURL` method
+
+// `URL.prototype.hash` accessors pair
+
+// `URL.prototype.host` accessors pair
+
+// `URL.prototype.hostname` accessors pair
+
+// `URL.prototype.href` accessors pair
+
+// `URL.prototype.origin` getter
+
+// `URL.prototype.password` accessors pair
+
+// `URL.prototype.pathname` accessors pair
+
+// `URL.prototype.port` accessors pair
+
+// `URL.prototype.protocol` accessors pair
+
+// `URL.prototype.searchParams` getter
+
+// `URL.prototype.search` accessors pair
+
+// `URL.prototype.toJSON` method
+
+// `URL.prototype.toString` method
+
+// `URL.prototype.username` accessors pair
+
+// `URL.revokeObjectURL` method
+
+// `URLSearchParams.prototype.append` method
+
+// `URLSearchParams.prototype.delete` method
+
+// `URLSearchParams.prototype.entries` method
+
+// `URLSearchParams.prototype.forEach` method
+
+// `URLSearchParams.prototype.getAll` method
+
+// `URLSearchParams.prototype.get` method
+
+// `URLSearchParams.prototype.has` method
+
+// `URLSearchParams.prototype.keys` method
+
+// `URLSearchParams.prototype.set` method
+
+// `URLSearchParams.prototype.sort` method
+
+// `URLSearchParams.prototype.toString` method
+
+// `URLSearchParams.prototype.values` method
+
+// `URLSearchParams.prototype[@@iterator]` method
+
+// `URLSearchParams` constructor
+
+// `URL` constructor
+
+// `get-own-property-symbols` polyfill symbols converted to object are not Symbol instances
+
+// a part of `ArraySpeciesCreate` abstract operation
+
+// add "__proto__" for Object.getPrototypeOf polyfill
+
+// add a flag to not completely full polyfills
+
+// add a key to Array.prototype[@@unscopables]
+
+// add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
+
+// all object keys, includes non-enumerable and symbols
+
+// also except WebOS Webkit https://github.com/zloirock/core-js/issues/898
+
+// argumentsList[@@iterator] is %ArrayProto_values%
+
+// avoid memory leak
+
+// based on https://github.com/bestiejs/punycode.js/blob/master/punycode.js
+
+// browsers with MutationObserver, except iOS - https://github.com/zloirock/core-js/issues/339
+
+// but their correct versions are not interesting for us
+
+// call something on iterator step with safe closing on error
+
+// can throw
+
+// check on default Array iterator
+
+// constructor polyfill
+
+// contained in target
+
+// cross-realm fallback
+
+// define iterator
+
+// deoptimization and performance degradation
+
+// deoptimization and serious performance degradation
+
+// eslint-disable-line no-unused-vars -- required for `.length`
+
+// eslint-disable-next-line es-x/no-array-from -- required for testing
+
+// eslint-disable-next-line es-x/no-array-from, no-throw-literal -- required for testing
+
+// eslint-disable-next-line es-x/no-array-isarray -- safe
+
+// eslint-disable-next-line es-x/no-array-prototype-foreach -- safe
+
+// eslint-disable-next-line es-x/no-function-prototype-bind -- safe
+
+// eslint-disable-next-line es-x/no-global-this -- safe
+
+// eslint-disable-next-line es-x/no-math-trunc -- safe
+
+// eslint-disable-next-line es-x/no-object-create -- safe
+
+// eslint-disable-next-line es-x/no-object-defineproperties -- safe
+
+// eslint-disable-next-line es-x/no-object-defineproperty -- required for testing
+
+// eslint-disable-next-line es-x/no-object-defineproperty -- safe
+
+// eslint-disable-next-line es-x/no-object-getownpropertydescriptor -- safe
+
+// eslint-disable-next-line es-x/no-object-getownpropertynames -- safe
+
+// eslint-disable-next-line es-x/no-object-getownpropertysymbols -- required for testing
+
+// eslint-disable-next-line es-x/no-object-getownpropertysymbols -- safe
+
+// eslint-disable-next-line es-x/no-object-getprototypeof -- required for testing
+
+// eslint-disable-next-line es-x/no-object-hasown -- safe
+
+// eslint-disable-next-line es-x/no-object-keys -- safe
+
+// eslint-disable-next-line es-x/no-object-setprototypeof -- safe
+
+// eslint-disable-next-line es-x/no-reflect -- safe
+
+// eslint-disable-next-line max-statements -- TODO
+
+// eslint-disable-next-line no-extend-native -- required
+
+// eslint-disable-next-line no-new-func -- fallback
+
+// eslint-disable-next-line no-prototype-builtins -- safe
+
+// eslint-disable-next-line no-restricted-globals -- safe
+
+// eslint-disable-next-line no-self-compare -- NaN check
+
+// eslint-disable-next-line no-unused-vars -- required for .length
+
+// eslint-disable-next-line no-unused-vars -- required for `.length`
+
+// eslint-disable-next-line no-useless-call -- required for testing
+
+// eslint-disable-next-line unicorn/relative-url-style -- required for testing
+
+// every
+
+// export additional methods
+
+// fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
+
+// fallback for non-array-like ES3 and non-enumerable old V8 strings
+
+// fallback for not array-like ES3 strings and DOM objects
+
+// filter
+
+// filterReject
+
+// find
+
+// findIndex
+
+// fix Array.prototype.{ values, @@iterator }.name in V8 / FF
+
+// fix native
+
+// flag - `iterable` interface - 'entries', 'keys', 'values', 'forEach' methods
+
+// for NPCG, like IE8. NOTE: This doesn' work for /(.?)?/
+
+// getting tag from ES6+ `Object.prototype.toString`
+
+// https://bugs.chromium.org/p/chromium/issues/detail?id=830565
+
+// https://bugs.chromium.org/p/v8/issues/detail?id=3334
+
+// https://bugzilla.mozilla.org/show_bug.cgi?id=773687
+
+// https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL
+
+// https://developer.mozilla.org/en-US/docs/Web/API/URL/revokeObjectURL
+
+// https://github.com/mathiasbynens/String.prototype.at
+
+// https://github.com/tc39/proposal-Symbol-description
+
+// https://github.com/tc39/proposal-array-filtering
+
+// https://github.com/zloirock/core-js/issues/475
+
+// https://github.com/zloirock/core-js/issues/640
+
+// https://github.com/zloirock/core-js/issues/677
+
+// https://github.com/zloirock/core-js/issues/679
+
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+
+// https://tc39.es/ecma262/#sec-%arrayiteratorprototype%.next
+
+// https://tc39.es/ecma262/#sec-%iteratorprototype%-@@iterator
+
+// https://tc39.es/ecma262/#sec-%stringiteratorprototype%.next
+
+// https://tc39.es/ecma262/#sec-array.from
+
+// https://tc39.es/ecma262/#sec-array.prototype-@@iterator
+
+// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
+
+// https://tc39.es/ecma262/#sec-array.prototype.concat
+
+// https://tc39.es/ecma262/#sec-array.prototype.entries
+
+// https://tc39.es/ecma262/#sec-array.prototype.every
+
+// https://tc39.es/ecma262/#sec-array.prototype.filter
+
+// https://tc39.es/ecma262/#sec-array.prototype.find
+
+// https://tc39.es/ecma262/#sec-array.prototype.findIndex
+
+// https://tc39.es/ecma262/#sec-array.prototype.foreach
+
+// https://tc39.es/ecma262/#sec-array.prototype.includes
+
+// https://tc39.es/ecma262/#sec-array.prototype.indexof
+
+// https://tc39.es/ecma262/#sec-array.prototype.keys
+
+// https://tc39.es/ecma262/#sec-array.prototype.map
+
+// https://tc39.es/ecma262/#sec-array.prototype.slice
+
+// https://tc39.es/ecma262/#sec-array.prototype.some
+
+// https://tc39.es/ecma262/#sec-array.prototype.values
+
+// https://tc39.es/ecma262/#sec-arrayspeciescreate
+
+// https://tc39.es/ecma262/#sec-createarrayiterator
+
+// https://tc39.es/ecma262/#sec-createmappedargumentsobject
+
+// https://tc39.es/ecma262/#sec-createunmappedargumentsobject
+
+// https://tc39.es/ecma262/#sec-function-instances-name
+
+// https://tc39.es/ecma262/#sec-get-regexp.prototype.flags
+
+// https://tc39.es/ecma262/#sec-getmethod
+
+// https://tc39.es/ecma262/#sec-hasownproperty
+
+// https://tc39.es/ecma262/#sec-isarray
+
+// https://tc39.es/ecma262/#sec-iscallable
+
+// https://tc39.es/ecma262/#sec-isconstructor
+
+// https://tc39.es/ecma262/#sec-json.stringify
+
+// https://tc39.es/ecma262/#sec-lengthofarraylike
+
+// https://tc39.es/ecma262/#sec-math.trunc
+
+// https://tc39.es/ecma262/#sec-newpromisecapability
+
+// https://tc39.es/ecma262/#sec-object.assign
+
+// https://tc39.es/ecma262/#sec-object.create
+
+// https://tc39.es/ecma262/#sec-object.defineproperties
+
+// https://tc39.es/ecma262/#sec-object.defineproperty
+
+// https://tc39.es/ecma262/#sec-object.getownpropertydescriptor
+
+// https://tc39.es/ecma262/#sec-object.getownpropertydescriptors
+
+// https://tc39.es/ecma262/#sec-object.getownpropertynames
+
+// https://tc39.es/ecma262/#sec-object.getownpropertysymbols
+
+// https://tc39.es/ecma262/#sec-object.getprototypeof
+
+// https://tc39.es/ecma262/#sec-object.keys
+
+// https://tc39.es/ecma262/#sec-object.prototype.propertyisenumerable
+
+// https://tc39.es/ecma262/#sec-object.prototype.tostring
+
+// https://tc39.es/ecma262/#sec-object.setprototypeof
+
+// https://tc39.es/ecma262/#sec-ordinarytoprimitive
+
+// https://tc39.es/ecma262/#sec-promise.all
+
+// https://tc39.es/ecma262/#sec-promise.prototype.catch
+
+// https://tc39.es/ecma262/#sec-promise.prototype.then
+
+// https://tc39.es/ecma262/#sec-promise.race
+
+// https://tc39.es/ecma262/#sec-promise.reject
+
+// https://tc39.es/ecma262/#sec-promise.resolve
+
+// https://tc39.es/ecma262/#sec-regexp.prototype.exec
+
+// https://tc39.es/ecma262/#sec-requireobjectcoercible
+
+// https://tc39.es/ecma262/#sec-speciesconstructor
+
+// https://tc39.es/ecma262/#sec-string.prototype-@@iterator
+
+// https://tc39.es/ecma262/#sec-string.prototype.codepointat
+
+// https://tc39.es/ecma262/#sec-symbol-constructor
+
+// https://tc39.es/ecma262/#sec-symbol.for
+
+// https://tc39.es/ecma262/#sec-symbol.iterator
+
+// https://tc39.es/ecma262/#sec-symbol.keyfor
+
+// https://tc39.es/ecma262/#sec-symbol.prototype-@@toprimitive
+
+// https://tc39.es/ecma262/#sec-symbol.prototype-@@tostringtag
+
+// https://tc39.es/ecma262/#sec-symbol.prototype.description
+
+// https://tc39.es/ecma262/#sec-tointegerorinfinity
+
+// https://tc39.es/ecma262/#sec-tolength
+
+// https://tc39.es/ecma262/#sec-toobject
+
+// https://tc39.es/ecma262/#sec-toprimitive
+
+// https://tc39.es/ecma262/#sec-topropertykey
+
+// https://url.spec.whatwg.org/#URL-stringification-behavior
+
+// https://url.spec.whatwg.org/#cannot-have-a-username-password-port
+
+// https://url.spec.whatwg.org/#concept-url-serializer
+
+// https://url.spec.whatwg.org/#dom-url-hash
+
+// https://url.spec.whatwg.org/#dom-url-host
+
+// https://url.spec.whatwg.org/#dom-url-hostname
+
+// https://url.spec.whatwg.org/#dom-url-href
+
+// https://url.spec.whatwg.org/#dom-url-origin
+
+// https://url.spec.whatwg.org/#dom-url-password
+
+// https://url.spec.whatwg.org/#dom-url-pathname
+
+// https://url.spec.whatwg.org/#dom-url-port
+
+// https://url.spec.whatwg.org/#dom-url-protocol
+
+// https://url.spec.whatwg.org/#dom-url-search
+
+// https://url.spec.whatwg.org/#dom-url-searchparams
+
+// https://url.spec.whatwg.org/#dom-url-tojson
+
+// https://url.spec.whatwg.org/#dom-url-username
+
+// https://url.spec.whatwg.org/#dom-urlsearchparams-append
+
+// https://url.spec.whatwg.org/#dom-urlsearchparams-delete
+
+// https://url.spec.whatwg.org/#dom-urlsearchparams-get
+
+// https://url.spec.whatwg.org/#dom-urlsearchparams-getall
+
+// https://url.spec.whatwg.org/#dom-urlsearchparams-has
+
+// https://url.spec.whatwg.org/#dom-urlsearchparams-set
+
+// https://url.spec.whatwg.org/#dom-urlsearchparams-sort
+
+// https://url.spec.whatwg.org/#host-parsing
+
+// https://url.spec.whatwg.org/#include-credentials
+
+// https://url.spec.whatwg.org/#interface-urlsearchparams
+
+// https://url.spec.whatwg.org/#is-special
+
+// https://url.spec.whatwg.org/#shorten-a-urls-path
+
+// https://url.spec.whatwg.org/#url-class
+
+// https://url.spec.whatwg.org/#url-parsing
+
+// https://url.spec.whatwg.org/#urlsearchparams-stringification-behavior
+
+// if the target is not iterable or it's an array with the default iterator - use a simple case
+
+// in old Chrome, versions of V8 isn't V8 = Chrome / 10
+
+// in old WebKit versions, `element.classList` is not an instance of global `DOMTokenList`
+
+// ipv4
+
+// ipv6
+
+// iterable DOM collections
+
+// make `.constructor === Promise` work for native promise-based APIs
+
+// make `Promise#then` return a polyfilled `Promise` for native promise-based APIs
+
+// make `instanceof Promise` work for native promise-based APIs
+
+// makes sure that native promise-based APIs `Promise#catch` properly works with patched `Promise#then`
+
+// map
+
+// modern engines have queueMicrotask method
+
+// next code unit is the high surrogate of a surrogate pair.
+
+// next index
+
+// number of basic code points.
+
+// number of code points that have been handled;
+
+// old engines have not location.origin
+
+// optimisation for array iterators
+
+// optional / simple context binding
+
+// should have correct order of operations (Edge bug)
+
+// should work with symbols and should have deterministic property order (V8 bug)
+
+// simulate the 'y' flag.
+
+// so check `userAgent` even if `.v8` exists, but 0
+
+// some
+
+// some Chrome versions have non-configurable methods on DOMTokenList
+
+// strange IE + webpack dev server bug - use .bind(global)
+
+// target
+
+// this helper broken in `core-js@3.4.1-3.4.4`, so we can't use `shared` helper
+
+// throws an error in rhino, see https://github.com/mozilla/rhino/issues/346
+
+// toObject with fallback for non-array-like ES3 strings
+
+// we can't check .prototype since constructors produced by .bind haven't it
+
+// with adding support of @@isConcatSpreadable and @@species
+
+// with adding support of @@species
+
+// workaround of WebKit ~ iOS Safari 10.1 bug
+
+// wrap Symbol constructor for correct work with undefined description
