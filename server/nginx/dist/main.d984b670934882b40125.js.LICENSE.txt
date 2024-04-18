@@ -1,0 +1,424 @@
+/*
+given a DOM element, return the list of all scroll parents, up the list of ancesors
+until we get to the top window object. This list is what we attach scroll listeners
+to, because if any of these parent elements scroll, we'll need to re-calculate the
+reference element's position.
+*/
+
+/* .basePlacements */
+
+/* .bottom */
+
+/* .end */
+
+/* .isElement */
+
+/* .isHTMLElement */
+
+/* .isShadowRoot */
+
+/* .left */
+
+/* .max */
+
+/* .min */
+
+/* .placements.reduce */
+
+/* .popperGenerator */
+
+/* .right */
+
+/* .round */
+
+/* .start */
+
+/* .top */
+
+/* .within */
+
+/* ["default"] */
+
+/* afterMain */
+
+/* afterRead */
+
+/* afterWrite */
+
+/* auto */
+
+/* basePlacements */
+
+/* beforeMain */
+
+/* beforeRead */
+
+/* beforeWrite */
+
+/* binding */
+
+/* bottom */
+
+/* clippingParents */
+
+/* createPopper */
+
+/* default */
+
+/* end */
+
+/* harmony default export */
+
+/* harmony export */
+
+/* harmony import */
+
+/* isElement */
+
+/* isHTMLElement */
+
+/* left */
+
+/* main */
+
+/* max */
+
+/* min */
+
+/* modifierPhases */
+
+/* modifierPhases.reduce */
+
+/* placements */
+
+/* popper */
+
+/* popperGenerator */
+
+/* read */
+
+/* reexport */
+
+/* reference */
+
+/* right */
+
+/* round */
+
+/* start */
+
+/* top */
+
+/* unused harmony export defaultModifiers */
+
+/* unused harmony export distanceAndSkiddingToXY */
+
+/* unused harmony export mapToStyles */
+
+/* variationPlacements */
+
+/* variationPlacements.filter */
+
+/* viewport */
+
+/* within */
+
+/* withinMaxClamp */
+
+/* write */
+
+/*#__PURE__*/
+
+/***/
+
+// $FlowFixMe[cannot-write]
+
+// $FlowFixMe[incompatible-call]: HTMLElement is a Node
+
+// $FlowFixMe[incompatible-call]: isBody tells us target will be an HTMLElement here
+
+// $FlowFixMe[incompatible-cast]: force type refinement, we compare offsetParent with window above, but Flow doesn't detect it
+
+// $FlowFixMe[incompatible-return]
+
+// $FlowFixMe[incompatible-return]: assume body is always available
+
+// $FlowFixMe[incompatible-return]: https://github.com/facebook/flow/issues/1414
+
+// $FlowFixMe[incompatible-type]: Flow seems to have problems with two array unions...
+
+// $FlowFixMe[prop-missing]
+
+// $FlowFixMe[prop-missing]: need a better way to handle this...
+
+// 0.001
+
+// A "clipping parent" is an overflowable container with the characteristic of
+
+// Also, `html.clientHeight` adds the bottom bar height in Safari iOS, even
+
+// Async and optimistically optimized update – it will not be executed if
+
+// Browsers where the left scrollbar doesn't cause an issue report `0` for
+
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/createPopper.js
+
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getClippingRect.js
+
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getCompositeRect.js
+
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getDocumentRect.js
+
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js
+
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getScrollParent.js
+
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getViewportRect.js
+
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/isTableElement.js
+
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/listScrollParents.js
+
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/index.js
+
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/modifiers/flip.js
+
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/modifiers/preventOverflow.js
+
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/utils/computeAutoPlacement.js
+
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/utils/detectOverflow.js
+
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/utils/getOppositePlacement.js
+
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/utils/mergeByName.js
+
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/utils/orderModifiers.js
+
+// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/utils/rectToClientRect.js
+
+// CSS selector
+
+// Composite means it takes into account transforms as well as layout.
+
+// DOM Element detected
+
+// Do not attempt to divide by 0, otherwise we get `Infinity` as scale
+
+// Don't proceed if `reference` or `popper` are not valid elements
+
+// ESM COMPAT FLAG
+
+// EXPORTS
+
+// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js
+
+// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js
+
+// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getLayoutRect.js
+
+// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js
+
+// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js + 1 modules
+
+// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getParentNode.js
+
+// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getWindow.js
+
+// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getWindowScroll.js
+
+// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getWindowScrollBarX.js
+
+// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/isScrollParent.js
+
+// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/dom-utils/listScrollParents.js + 1 modules
+
+// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/enums.js
+
+// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/modifiers/applyStyles.js
+
+// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/utils/computeOffsets.js
+
+// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/utils/detectOverflow.js + 4 modules
+
+// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/utils/getBasePlacement.js
+
+// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/utils/getVariation.js
+
+// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/utils/mergePaddingObject.js
+
+// EXTERNAL MODULE: ./node_modules/@popperjs/core/lib/utils/within.js
+
+// Fallback here: "Not Safari" userAgent
+
+// Fallback to 1 in case both values are `0`
+
+// Feature detection fails in mobile emulation mode in Chrome.
+
+// Firefox wants us to check `-x` and `-y` variations as well
+
+// First, attempt with faster native method
+
+// Fixes https://github.com/popperjs/popper-core/issues/1223
+
+// Flow doesn't support to extend this property, but it's the most
+
+// For high frequency updates (e.g. `resize` and `scroll` events), always
+
+// Gets the closest ancestor positioned element. Handles some edge cases,
+
+// Gets the entire size of the scrollable document area, even extending outside
+
+// Gets the maximum area that the element is visible in due to any number of
+
+// Give up, the result is false
+
+// IE 11 has no ShadowRoot
+
+// IE11 does not support Object.values
+
+// If <html> has a CSS width greater than the viewport, then this will be
+
+// In Chrome, it returns a value very close to 0 (+/-) but contains rounding
+
+// Math.abs(win.innerWidth / visualViewport.scale - visualViewport.width) <
+
+// Modifiers have the ability to reset the current update cycle. The
+
+// NB: This isn't supported on iOS <= 12. If the keyboard is open, the popper
+
+// Offsets are the actual position the popper needs to have to be
+
+// Offsets can be applied only to the popper element
+
+// On each update cycle, the `modifiersData` property for each modifier
+
+// On visiting object, check for its dependencies and visit them recursively
+
+// Orders the modifiers based on their dependencies and `phase`
+
+// Popper 1 is broken in this case and never had a bug report so let's assume
+
+// Returns the composite rect of an element relative to its offsetParent.
+
+// Returns the layout rect of an element relative to its offsetParent. Layout
+
+// Round the offsets to the nearest suitable subpixel based on the DPR.
+
+// Safari returns a number <= 0, usually < -1 when pinch-zoomed
+
+// ShadowRoot detected
+
+// Store the reference and popper rects to be read by modifiers
+
+// Strip out disabled modifiers
+
+// Sync update – it will always be executed, even if not necessary. This
+
+// This is non-exhaustive but covers the most common CSS properties that
+
+// This is the most basic placement, and will be adjusted by
+
+// This modifier takes the styles prepared by the `computeStyles` modifier
+
+// To ensure persistent data, use `${name}#persistent`
+
+// UNUSED EXPORTS: detectOverflow
+
+// Use the clientRect sizes if it's not been transformed.
+
+// Uses Layout Viewport (like Chrome; Safari does not currently)
+
+// Zooming can change the DPR, but it seems to report a value that will
+
+// `.offsetParent` reports `null` for fixed elements, while absolute elements
+
+// `2` may be desired in some cases – research later
+
+// `initial`
+
+// and applies them to the HTMLElements such as popper and arrow
+
+// anymore
+
+// anyway.
+
+// arrow is optional + virtual elements
+
+// can be obscured underneath it.
+
+// check for visited object
+
+// cleanly divide the values into the appropriate subpixels.
+
+// clipping (or hiding) overflowing elements with a position different from
+
+// clipping parents
+
+// create a containing block.
+
+// effective way to apply styles to an HTMLElement
+
+// errors due to floating point numbers, so we need to check precision.
+
+// eslint-disable-next-line import/no-unused-modules
+
+// https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#identifying_the_containing_block
+
+// https://github.com/popperjs/popper-core/issues/1078
+
+// https://github.com/popperjs/popper-core/issues/837
+
+// if it isn't open, so if this isn't available, the popper will be detected
+
+// incorrect for RTL.
+
+// is filled with the initial data specified by the modifier. This means
+
+// is useful for low frequency updates where sync behavior simplifies the
+
+// it doesn't persist and is fresh on each update.
+
+// it's not an issue. I don't think anyone ever specifies width on <html>
+
+// logic was previously ran for the previous placement and is therefore
+
+// logic.
+
+// means it doesn't take into account transforms.
+
+// most common use case for this is the `flip` modifier changing the
+
+// not necessary (debounced to run at most once-per-tick)
+
+// of the `<html>` and `<body>` rect bounds if horizontally scrollable
+
+// order based on dependencies
+
+// order based on phase
+
+// placement, which then needs to re-run all the modifiers, because the
+
+// prefer the async Popper#update method
+
+// properly positioned near its reference element
+
+// properties
+
+// return the containing block
+
+// source: https://stackoverflow.com/questions/49875255
+
+// stale/incorrect
+
+// step into the shadow DOM of the parent of a slotted node
+
+// such as table ancestors and cross browser bugs.
+
+// the modifiers in the next step
+
+// this (e.g. Edge 2019, IE11, Safari)
+
+// this is a quicker (but less type safe) way to save quite some bytes from the bundle
+
+// to overflow the bottom of the screen too early.

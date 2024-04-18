@@ -1,0 +1,14 @@
+#!/bin/sh
+
+cd /opt/app
+# If NODE_ENV is set to production, devDependencies is not installed and cannot be started.
+if [ $NODE_ENV == "production" ]; then {
+  echo "In Server Run"
+  /usr/local/bin/yarn install --production=false
+  /usr/local/bin/yarn start:docker:server
+} else {
+  echo "In Local Server Run"
+  /usr/local/bin/yarn install
+  /usr/local/bin/yarn start
+}
+fi
